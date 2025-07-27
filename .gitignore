@@ -1,0 +1,22 @@
+# .gitignore
+
+# Ignorar las dependencias de Node.js
+# Esta carpeta se regenera ejecutando "npm install"
+node_modules/
+
+# Ignorar el archivo de variables de entorno
+# ¡Contiene claves secretas y contraseñas!
+.env
+
+# Archivos de registro de NPM
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Archivos de sistema operativo
+.DS_Store
+Thumbs.db
+
+# Archivos de registro genéricos
+*.log

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administración</title>
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+    <div id="login-section" class="container">
+        <h1>Acceso al Panel</h1>
+        <form id="login-form">
+            <label for="password">Contraseña:</label>
+            <input type="password" id="password" required>
+            <button type="submit">Entrar</button>
+            <p id="login-error" class="error-message"></p>
+        </form>
+    </div>
+
+    <div id="admin-panel" class="container" style="display: none;">
+        <header>
+            <h1>Gestión de Posts</h1>
+            <button id="logout-button">Cerrar Sesión</button>
+        </header>
+
+        <div class="panel-content">
+            <div class="form-container">
+                <h2 id="form-title">Añadir Nuevo Post</h2>
+                <form id="post-form">
+                    <!-- Contenedor para mostrar errores del formulario -->
+                    <p id="form-error" class="error-message"></p>
+                    
+                    <input type="hidden" id="post-id">
+                    
+                    <label for="title">Título:</label>
+                    <input type="text" id="title" required>
+
+                    <label for="subtitle">Subtítulo:</label>
+                    <input type="text" id="subtitle">
+
+                    <label for="author">Autor:</label>
+                    <input type="text" id="author" required>
+
+                    <label for="date">Fecha:</label>
+                    <input type="date" id="date" required>
+
+                    <label for="imageUrl">URL de la Imagen:</label>
+                    <input type="url" id="imageUrl">
+
+                    <label for="excerpt">Extracto (resumen):</label>
+                    <textarea id="excerpt" rows="3" required></textarea>
+
+                    <label for="content">Contenido (acepta saltos de línea):</label>
+                    <textarea id="content" rows="10" required></textarea>
+
+                    <label for="tags">Etiquetas (separadas por comas):</label>
+                    <input type="text" id="tags">
+
+                    <label for="metaTitle">Meta Título (SEO):</label>
+                    <input type="text" id="metaTitle">
+
+                    <label for="metaDescription">Meta Descripción (SEO):</label>
+                    <textarea id="metaDescription" rows="2"></textarea>
+
+                    <div class="form-buttons">
+                        <button type="submit" id="save-button">Guardar Post</button>
+                        <button type="button" id="cancel-button" style="display: none;">Cancelar Edición</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="posts-list-container">
+                <h2>Posts Existentes</h2>
+                <ul id="posts-list">
+                    <!-- Los posts se cargarán aquí con JavaScript -->
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>

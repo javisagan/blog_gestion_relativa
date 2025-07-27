@@ -1,0 +1,44 @@
+<!-- views/post.ejs -->
+<%- include('partials/header', { pageTitle: pageTitle, pageDescription: pageDescription }) %>
+
+<article class="full-post">
+    <h1><%= post.title %></h1>
+    <% if (post.subtitle) { %>
+        <h2><%= post.subtitle %></h2>
+    <% } %>
+    <p class="post-meta">
+        Por <%= post.author %> el <%= new Date(post.date).toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' }) %>
+    </p>
+
+    <% if (post.imageUrl) { %>
+        <img src="<%= post.imageUrl %>" alt="Imagen principal del post <%= post.title %>" class="full-post-image">
+    <% } %>
+
+    <div class="post-content">
+        <%- post.content.replace(/\n/g, '<br>') %>
+    </div>
+
+    <% if (post.tags) { %>
+        <div class="post-tags">
+            <strong>Etiquetas:</strong>
+            <% post.tags.split(',').forEach(tag => { %>
+                <span class="tag"><%= tag.trim() %></span>
+            <% }) %>
+        </div>
+    <% } %>
+</article>
+
+<nav class="post-navigation">
+    <div class="nav-previous">
+        <% if (previousPost && previousPost.slug) { %>
+            <a href="/post/<%= previousPost.slug %>">&larr; Post Anterior <br><span><%= previousPost.title %></span></a>
+        <% } %>
+    </div>
+    <div class="nav-next">
+        <% if (nextPost && nextPost.slug) { %>
+            <a href="/post/<%= nextPost.slug %>">Siguiente Post &rarr;<br><span><%= nextPost.title %></span></a>
+        <% } %>
+    </div>
+</nav>
+
+<%- include('partials/footer') %>
